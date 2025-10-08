@@ -1,0 +1,10 @@
+
+const addEmployee =()=>{
+
+}
+
+
+
+
+
+export {addEmployee}
