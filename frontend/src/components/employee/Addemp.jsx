@@ -16,7 +16,7 @@ const Addemp = () => {
             setDepartments(departments)
         }
         getDepartments();
-    })
+    },[])
 
     const handleChange = (e) => {
         const { name, value, files } = e.target
@@ -42,12 +42,14 @@ const Addemp = () => {
             })
             if (response.data.success) {
                 navigate("/admin-dashboard/employees")
+            } else {
+                alert(response.data.error || response.data.message || "Failed to add employee")
             }
 
 
         } catch (error) {
             if (error.response && !error.response.data.success) {
-                alert(error.response.data.error)
+                alert(error.response.data.error || error.response.data.message)
             }
         }
     }
@@ -202,7 +204,7 @@ const Addemp = () => {
                         </label>
                         <select name="role" onChange={handleChange} className="px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none">
                             <option value="">Select Role</option>
-                            <option>Employee</option>
+                            <option>employee</option>
                             <option>Manager</option>
                             <option>Admin</option>
                         </select>
